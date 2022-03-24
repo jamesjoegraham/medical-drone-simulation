@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<launch>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+  
+   <arg name="world_name" value="$(find quadcopter)/worlds/base.world"/>
+  </include>
+    <!-- <param name="robot_description"
+       command="$(find xacro)/xacro $(find quadcopter)/models/quad.xacro"/> -->
+   
+    <group ns="drone1">
+       <param name="robot_description" command="$(find xacro)/xacro --inorder $(find quadcopter)/models/quad.xacro"/>
+       <node name="spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model drone1 -param robot_description -x 0 -y 0 -z 0  "/>
+    </group> 
+</launch>
