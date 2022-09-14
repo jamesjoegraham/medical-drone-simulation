@@ -1,5 +1,1 @@
-build/
-devel/
-logs/
-.catkin_tools/
 lib/*
