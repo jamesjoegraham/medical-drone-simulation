@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<sdf version="1.4">
+  <world name="default">
+     <include>
+      <uri>model://sun</uri>
+      </include>
+    <physics type="ode">
+      <gravity>0 0 -9.81</gravity>
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>10</iters>
+          <sor>1.3</sor>
+        </solver>
+        <constraints>
+          <cfm>0.0</cfm>
+          <erp>0.2</erp>
+          <contact_max_correcting_vel>10</contact_max_correcting_vel>
+          <contact_surface_layer>0.001</contact_surface_layer>
+        </constraints>
+      </ode>
+      <max_step_size>0.001</max_step_size>
+    </physics>
+    
+    
+    <model name="3dhalifax">
+      <link name="base_link">
+        <pose>0 0 0 0 0 0</pose>
+        <collision name="base_link_collision">
+          <geometry>
+            <mesh>
+              <uri>file://hospitalsfinal.dae</uri>
+              <scale>20 20 20</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="small_indoor_scenario">
+          <geometry>
+            <mesh>
+              <uri>file://hospitalsfinal.dae</uri>
+              <scale>20 20 20</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+          <!-- <material>
+            <script>
+              <uri>hector_gazebo://hector_gazebo_worlds/Media/materials/scripts/hospitals_materials.material</uri>
+              <uri>hector_gazebo://hector_gazebo_worlds/Media/models/fixedtexture.png</uri>
+            </script>
+          </material> -->
+        </visual>
+      </link>
+      <static>true</static>
+    </model>
+  </world>
+</sdf>
