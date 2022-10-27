@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: hector_quadrotor_description
+    relative_path: urdf/quadrotor.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/quadrotor.srdf
+  CONFIG:
+    author_name: Kory Melchior
+    author_email: kory28195@gmail.com
+    generated_timestamp: 1666832727
