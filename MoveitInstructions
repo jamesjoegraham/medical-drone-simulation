@@ -1,0 +1,16 @@
+##starting file of commands I've used to setup navigation
+##missing a couple that are in my notes and i'll fill in later
+(26 Oct 2022)(Trying to get Moveit! setup
+##run from catkin_ws/src
+sudo apt install ros-noetic-moveit
+sudo apt install python3-wstool
+wstool init .
+wstool merge -t . https://raw.githubusercontent.com/ros-planning/moveit/master/moveit.rosinstall
+wstool remove  moveit_tutorials  # this is cloned in the next section
+wstool update -t .
+
+##run from catkin_ws
+
+catkin build (takes about 15 mins)
+roslaunch /opt/ros/noetic/share/moveit_setup_assistant/launch/setup_assistant.launch
+
