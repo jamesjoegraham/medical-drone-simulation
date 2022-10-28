@@ -12,6 +12,13 @@
     <arg name="gui" value="$(arg gazebo_gui)"/>
   </include>
 
+  <gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/MYROBOT</robotNamespace>
+  </plugin>
+  </gazebo>
+
+
   <!-- send robot urdf to param server -->
   <param name="robot_description" textfile="$(find hector_moveit_config)/config/gazebo_quadrotor.urdf" />
 
