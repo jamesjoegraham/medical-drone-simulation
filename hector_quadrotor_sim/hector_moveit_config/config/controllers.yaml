@@ -3,4 +3,10 @@ controller_list:
     type: MultiDofFollowJointTrajectory
     default: true
     joints:
-      - virtual_joint
+      - virtual_joint/trans_x
+      - virtual_joint/trans_y
+      - virtual_joint/trans_z
+      - virtual_joint/rot_x
+      - virtual_joint/rot_y
+      - virtual_joint/rot_z
+      - virtual_joint/rot_w
