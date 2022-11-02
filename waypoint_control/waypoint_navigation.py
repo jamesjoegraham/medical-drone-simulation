@@ -4,13 +4,14 @@ import rospy
 from geometry_msgs.msg import Twist, PoseStamped, Pose
 from gazebo_msgs.msg import LinkStates
 import json
+import os
 
 #cur_pose = Pose()
 #def gazebo_pose_callback(msg):
 #    cur_pose = msg.pose
 
 # Open Waypoints JSON File
-waypoint_file = open("waypoints_1.json")
+waypoint_file = open(os.path.dirname(__file__)+ '/waypoints_1.json')
 waypoints = json.load(waypoint_file)
 
 # Initialize ROS Functionality
@@ -31,6 +32,11 @@ for waypoint in waypoints:
 
     print(pose_msg)
 
+    
+    #wait for connections before publishing messsage
+    while(pose_pub.get_num_connections() < 1):
+        pass
+    
     pose_pub.publish(pose_msg)
     rospy.spin()
 
