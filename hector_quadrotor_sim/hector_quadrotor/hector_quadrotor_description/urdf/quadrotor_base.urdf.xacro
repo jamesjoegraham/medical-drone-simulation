@@ -18,14 +18,14 @@
         <origin xyz="0 0 0" rpy="0 0 0" />
         <!-- <origin xyz="28.204388 7.095104 -9.95" rpy="0 0 0" /> -->
         <geometry>
-          <mesh filename="package://hector_quadrotor_description/meshes/quadrotor/quadrotor_base.dae"/>
+          <mesh filename="package://hector_quadrotor_description/meshes/quadrotor/quadrotor_base.dae" scale = "3 3 3"/>
         </geometry>
       </visual>
 
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://hector_quadrotor_description/meshes/quadrotor/quadrotor_base.stl"/>
+          <mesh filename="package://hector_quadrotor_description/meshes/quadrotor/quadrotor_base.stl" scale = "3 3 3"/>
         </geometry>
       </collision>
     </link>
