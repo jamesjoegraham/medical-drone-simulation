@@ -16,6 +16,7 @@
 
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
+        <!-- <origin xyz="28.204388 7.095104 -9.95" rpy="0 0 0" /> -->
         <geometry>
           <mesh filename="package://hector_quadrotor_description/meshes/quadrotor/quadrotor_base.dae"/>
         </geometry>
