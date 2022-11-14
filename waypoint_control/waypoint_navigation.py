@@ -32,7 +32,9 @@ def arrived_at_waypoint(current, waypoint):
 
 
 # Open Waypoints JSON File
-waypoint_file = open(os.path.dirname(__file__)+ '/waypoints_1.json')
+
+input_file =  input("Enter .json file name for waypoints: ")
+waypoint_file = open(os.path.dirname(__file__) + "/" + input_file)
 waypoints = json.load(waypoint_file)
 
 # Initialize ROS Functionality
