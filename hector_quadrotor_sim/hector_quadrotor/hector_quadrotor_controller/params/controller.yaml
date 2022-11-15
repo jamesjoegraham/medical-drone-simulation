@@ -2,7 +2,7 @@ controller:
     pose:
         type: hector_quadrotor_controller/PoseController
         xy:
-            k_p: 1.0
+            k_p: 2.0
             k_i: 1.0
             k_d: 0.0
             limit_output: 5.0
