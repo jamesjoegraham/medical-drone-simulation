@@ -33,7 +33,7 @@ controller:
         angular/xy:
             k_p: 4.0
             k_i: 5.0
-            k_d: 2.0
+            k_d: 5.0
             time_constant: 0.01
         angular/z:
             k_p: 5.0
