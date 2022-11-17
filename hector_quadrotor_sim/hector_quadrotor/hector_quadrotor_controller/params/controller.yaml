@@ -2,7 +2,7 @@ controller:
     pose:
         type: hector_quadrotor_controller/PoseController
         xy:
-            k_p: 1.0
+            k_p: 1.25
             k_i: 0.0
             k_d: 1.0
             limit_output: 5.0
@@ -32,7 +32,7 @@ controller:
             time_constant: 0.05
         angular/xy:
             k_p: 5.0
-            k_i: 5.0
+            k_i: 2.0
             k_d: 5.0
             limit_output: 3.0
             time_constant: 0.01

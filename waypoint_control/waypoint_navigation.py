@@ -1,10 +1,11 @@
 #! /usr/bin/env python3
 
 import rospy
-from geometry_msgs.msg import Twist, PoseStamped, Pose
+from geometry_msgs.msg import Twist, PoseStamped, Pose, Quaternion
 import json
 import os
 import sys, signal
+from tf.transformations import quaternion_from_euler
 
 # Used to allow for CTRL-C (SIGINT) to exit when in while loop
 def signal_handler(signal, frame):
@@ -59,6 +60,18 @@ for waypoint in waypoints:
     pose.position.x = waypoint["x"]
     pose.position.y = waypoint["y"]
     pose.position.z = waypoint["z"]
+
+    yaw = 0
+    if "yaw" in waypoint:
+        yaw = waypoint["yaw"]
+    (w, x, y, z) = quaternion_from_euler(0, 0, yaw/57.29)
+    ori = Quaternion()
+    ori.w = w
+    ori.x = x
+    ori.y = y 
+    ori.z = z
+    pose.orientation = ori
+
     # New parameter for waypoint to sepecify if the drone should move through it quickly or take time to stabilize
     try: 
         waypoint_type = waypoint["type"]
@@ -77,10 +90,10 @@ for waypoint in waypoints:
 
     # Wait until waypoint has been reached. Move fast or stabilize depending on waypoint type
     if waypoint_type == "fast":
-        while(not arrived_at_waypoint(cur_pose, pose_msg.pose, 0.5)):
+        while(not arrived_at_waypoint(cur_pose, pose_msg.pose, 5.0)):
             pass
     elif waypoint_type == "stable":
-        while(not arrived_at_waypoint(cur_pose, pose_msg.pose, 0.3)):
+        while(not arrived_at_waypoint(cur_pose, pose_msg.pose, 0.8)):
             pass
         rospy.sleep(0.7)
 
