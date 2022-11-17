@@ -12,8 +12,8 @@
   </include>
 
   <!-- Start SLAM system -->
-  <include file="$(find hector_mapping)/launch/mapping_default.launch">
+  <!-- <include file="$(find hector_mapping)/launch/mapping_default.launch">
     <arg name="odom_frame" value="world"/>
-  </include>
+  </include> -->
 
 </launch>

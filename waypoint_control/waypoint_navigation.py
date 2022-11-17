@@ -17,39 +17,22 @@ def gazebo_pose_callback(msg):
     global cur_pose
     cur_pose = msg.pose
 
-def arrived_at_waypoint(current, waypoint):
+def arrived_at_waypoint(current, waypoint, close_enough):
     dx = abs(waypoint.position.x - current.position.x)
     dy = abs(waypoint.position.y - current.position.y)
     dz = abs(waypoint.position.z - current.position.z)
-
-    close_enough = 0.5
 
     # If we're in this range
     if dx < close_enough and dy < close_enough and dz < close_enough:
         return True
 
     return False
-
-def stable_at_waypoint(current, waypoint):
-    dx = abs(waypoint.position.x - current.position.x)
-    dy = abs(waypoint.position.y - current.position.y)
-    dz = abs(waypoint.position.z - current.position.z)
-
-    close_enough = 0.3
-
-    # If we're in this range
-    if dx < close_enough and dy < close_enough and dz < close_enough:
-        return True
-    
-    # give time to stabilize
-    rospy.sleep(0.7)
-
-    return False
-
 
 # Open Waypoints JSON File
 input_file =  input("Enter .json file name for waypoints: ")
 
+if not input_file:
+    input_file = "CStest"
 if not input_file.endswith('.json'):
     input_file = input_file + '.json'
     
@@ -94,17 +77,18 @@ for waypoint in waypoints:
 
     # Wait until waypoint has been reached. Move fast or stabilize depending on waypoint type
     if waypoint_type == "fast":
-        while(not arrived_at_waypoint(cur_pose, pose_msg.pose)):
+        while(not arrived_at_waypoint(cur_pose, pose_msg.pose, 0.5)):
             pass
     elif waypoint_type == "stable":
-        while(not stable_at_waypoint(cur_pose, pose_msg.pose)):
+        while(not arrived_at_waypoint(cur_pose, pose_msg.pose, 0.3)):
             pass
+        rospy.sleep(0.7)
+
+    print("Arrived at waypoint!")
 
     # check to see if theres a passenger pickup
     if passenger_pickup == "yes":
         rospy.sleep(4)
-
-    print("Arrived at waypoint!")
-
+    
     # Wait a small period of time before moving to the next waypoint
     rospy.sleep(0.2)
