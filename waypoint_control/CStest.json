@@ -3,24 +3,26 @@
         "x": 0,
         "y": 0,
         "z": 5,
-        "-type": "stable"
+        "type": "stable"
     },
     {
         "x": -15.182802,
         "y": -10.937099,
         "z": 5,
-        "-type": "stable"
+        "yaw": 180,
+        "type": "stable"
     },
     {
         "x": -16.931044,
         "y": -34.996239,
         "z": 10,
-        "-type": "stable"
+        "yaw": 270,
+        "type": "stable"
     },
     {   "x": 0,
         "y": 0,
         "z": 5,
-        "-type": "stable"
+        "type": "stable"
     }   
 ]
    

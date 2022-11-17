@@ -64,12 +64,12 @@ for waypoint in waypoints:
     yaw = 0
     if "yaw" in waypoint:
         yaw = waypoint["yaw"]
-    (w, x, y, z) = quaternion_from_euler(0, 0, yaw/57.29)
+    q = quaternion_from_euler(0, 0, yaw/57.29)
     ori = Quaternion()
-    ori.w = w
-    ori.x = x
-    ori.y = y 
-    ori.z = z
+    ori.w = q[3]
+    ori.x = q[0]
+    ori.y = q[1]
+    ori.z = q[2]
     pose.orientation = ori
 
     # New parameter for waypoint to sepecify if the drone should move through it quickly or take time to stabilize
