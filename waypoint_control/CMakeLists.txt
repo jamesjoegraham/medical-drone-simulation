@@ -9,6 +9,7 @@ project(waypoint_control)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
+  gazebo_msgs
   roscpp
   rospy
   std_msgs
@@ -162,6 +163,7 @@ include_directories(
 ## in contrast to setup.py, you can choose the destination
 catkin_install_python(PROGRAMS
    waypoint_navigation.py
+   apply_body_wrench_script.py 
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
