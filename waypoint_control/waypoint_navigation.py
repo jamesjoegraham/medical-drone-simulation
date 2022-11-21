@@ -90,7 +90,7 @@ for waypoint in waypoints:
 
     # Wait until waypoint has been reached. Move fast or stabilize depending on waypoint type
     if waypoint_type == "fast":
-        while(not arrived_at_waypoint(cur_pose, pose_msg.pose, 5.0)):
+        while(not arrived_at_waypoint(cur_pose, pose_msg.pose, 6.0)):
             pass
     elif waypoint_type == "stable":
         while(not arrived_at_waypoint(cur_pose, pose_msg.pose, 0.8)):
