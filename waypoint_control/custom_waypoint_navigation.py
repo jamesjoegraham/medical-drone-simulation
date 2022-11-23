@@ -8,7 +8,6 @@ import json
 import os
 import sys, signal
 from tf.transformations import quaternion_from_euler
-import apply_body_wrench_script
 
 # Used to allow for CTRL-C (SIGINT) to exit when in while loop
 def signal_handler(signal, frame):
@@ -32,13 +31,9 @@ def arrived_at_waypoint(current, waypoint, close_enough):
 
     return False
 
-#check if wrenches will be applied
-wrenches_check = input("Apply Wrenches during flight (y/n): ")
-if wrenches_check == 'y':
-    wrench_file = input("Enter .json file name for wrenches: ")
-
 # Open Waypoints JSON File
-input_file =  input("Enter .json file name for waypoints: ")
+# input_file =  input("Enter .json file name for waypoints: ")
+input_file = rospy.get_param('custom_waypoint_navigation/waypoints_json')
 
 if not input_file:
     input_file = "CStest"
@@ -61,8 +56,6 @@ while(pose_pub.get_num_connections() < 1):
 waypoint_type = "fast" 
 passenger_pickup = "no"
 
-# call wrench script to begin
-apply_body_wrench_script.apply_wrench(wrench_file)
 
 for waypoint in waypoints:
     print("Moving to waypoint")

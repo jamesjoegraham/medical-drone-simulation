@@ -24,7 +24,7 @@ def applyForce(wrench, wrench_duration):
     return success
 
 
-def apply_wrench(wrench_file):
+def get_wrench(wrench_file):
     if not wrench_file:
         wrench_file = "ImpulseTest"
     if not wrench_file.endswith('.json'):
@@ -60,7 +60,9 @@ def apply_wrench(wrench_file):
 
 if __name__ == "__main__":
     # Open Waypoints JSON File
-    wrench_file =  input("Enter .json file name for impulses: ")
-    test(wrench_file)
+    # wrench_file =  input("Enter .json file name for impulses: ")
+    
+    wrench_file = rospy.get_param('/apply_body_wrench_script/wrenches_json')
+    get_wrench(wrench_file)
 
     
