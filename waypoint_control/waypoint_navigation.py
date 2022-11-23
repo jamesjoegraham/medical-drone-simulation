@@ -1,11 +1,14 @@
 #! /usr/bin/env python3
 
+
+
 import rospy
 from geometry_msgs.msg import Twist, PoseStamped, Pose, Quaternion
 import json
 import os
 import sys, signal
 from tf.transformations import quaternion_from_euler
+import apply_body_wrench_script
 
 # Used to allow for CTRL-C (SIGINT) to exit when in while loop
 def signal_handler(signal, frame):
@@ -29,6 +32,11 @@ def arrived_at_waypoint(current, waypoint, close_enough):
 
     return False
 
+#check if wrenches will be applied
+wrenches_check = input("Apply Wrenches during flight (y/n): ")
+if wrenches_check == 'y':
+    wrench_file = input("Enter .json file name for wrenches: ")
+
 # Open Waypoints JSON File
 input_file =  input("Enter .json file name for waypoints: ")
 
@@ -37,7 +45,7 @@ if not input_file:
 if not input_file.endswith('.json'):
     input_file = input_file + '.json'
     
-waypoint_file = open(os.path.dirname(__file__) + "/" + input_file)
+waypoint_file = open(os.path.dirname(__file__) + "/waypoint_json/" + input_file)
 waypoints = json.load(waypoint_file)
 
 # Initialize ROS Functionality
@@ -52,6 +60,9 @@ while(pose_pub.get_num_connections() < 1):
 # Waypoint settings set to defualts
 waypoint_type = "fast" 
 passenger_pickup = "no"
+
+# call wrench script to begin
+apply_body_wrench_script.apply_wrench(wrench_file)
 
 for waypoint in waypoints:
     print("Moving to waypoint")

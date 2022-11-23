@@ -1,0 +1,53 @@
+[
+    {
+        "forece x": 0,
+        "force y": 0,
+        "force z": 5,
+        "torque x": 0,
+        "torque y": 0,
+        "torque z": 0,
+        "type": "impulse",
+        "duration": 3
+    },
+    {
+        "forece x": 0,
+        "force y": 0,
+        "force z": 5,
+        "torque x": 0,
+        "torque y": 0,
+        "torque z": 0,
+        "type": "impulse",
+        "duration": 3
+    },
+    {
+        "forece x": 0,
+        "force y": 0,
+        "force z": 5,
+        "torque x": 0,
+        "torque y": 0,
+        "torque z": 0,
+        "type": "impulse",
+        "duration": 3
+    },
+    {
+        "forece x": 0,
+        "force y": 0,
+        "force z": 5,
+        "torque x": 0,
+        "torque y": 0,
+        "torque z": 0,
+        "type": "impulse",
+        "duration": 3
+    },
+    {
+        "forece x": 0,
+        "force y": 0,
+        "force z": 5,
+        "torque x": 0,
+        "torque y": 0,
+        "torque z": 0,
+        "type": "impulse",
+        "duration": 3
+    }
+]
+   
