@@ -1,0 +1,11 @@
+[
+    {
+        "type": "oscillation",
+        "osc_type": "sin",
+        "frequency": 0.5,
+        "amplitude": 2,
+        "dimension": "torque z",
+        "duration": 40
+    }
+]
+   

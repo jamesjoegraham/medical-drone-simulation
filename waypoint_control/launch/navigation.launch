@@ -2,12 +2,12 @@
 
 <launch>
       <arg name="waypoints_json" default="CStest" />
-      <arg name="wrenches_json" default="impulse" />
+      <arg name="wrenches_json" default="oscillation" />
 
       <node pkg="waypoint_control" name="custom_waypoint_navigation" type="custom_waypoint_navigation.py" output="screen">
             <param name="waypoints_json" value="$(arg waypoints_json)" />
       </node>
-      <node pkg="waypoint_control" name="apply_body_wrench_script" type="apply_body_wrench_script.py" output="screen">
+      <node pkg="waypoint_control" name="body_wrench_script" type="body_wrench_script.py" output="screen">
             <param name="wrenches_json" value="$(arg wrenches_json)" />
       </node>
 
