@@ -8,7 +8,13 @@ import time
 import os
 from gazebo_msgs.srv import ApplyBodyWrench
 from geometry_msgs.msg import Wrench
+from gazebo_msgs.msg import LinkStates
 
+
+# Initialize ROS Functionality
+# rospy.init_node('command_pose_listener')
+# pose_pub = rospy.Subscriber('/command/pose', PoseStamped, queue_size=1)
+# rospy.Subscriber("/ground_truth_to_tf/pose", PoseStamped, gazebo_pose_callback)
 
 def apply_force(wrench, wrench_duration): 
     rospy.wait_for_service('/gazebo/apply_body_wrench') 
@@ -66,7 +72,7 @@ def get_wrench(wrench_file):
         print(wrenchj)
         wrench_type = wrenchj["type"]
 
-        if wrench_type == "oscillation":
+        if wrench_type == "oscillation" or wrench_type == "ramp":
             frequency = wrenchj["frequency"]
             amplitude = wrenchj["amplitude"]
             duration = wrenchj["duration"]
@@ -109,6 +115,12 @@ if __name__ == "__main__":
     wrench_file = rospy.get_param('/body_wrench_script/wrenches_json')
     rospy.init_node('body_wrench_automation')
     # wrench_file = "oscillation"
+
+    # wait for gazebo to be unpaused before proceeding
+    while not rospy.wait_for_message('gazebo/link_states', LinkStates):
+        pass
+
+
     get_wrench(wrench_file)
 
     
