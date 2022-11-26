@@ -106,9 +106,9 @@ if __name__ == "__main__":
     # Open Waypoints JSON File
     # wrench_file =  input("Enter .json file name for impulses: ")
     
-    #wrench_file = rospy.get_param('/apply_body_wrench_script/wrenches_json')
+    wrench_file = rospy.get_param('/body_wrench_script/wrenches_json')
     rospy.init_node('body_wrench_automation')
-    wrench_file = "oscillation"
+    # wrench_file = "oscillation"
     get_wrench(wrench_file)
 
     
