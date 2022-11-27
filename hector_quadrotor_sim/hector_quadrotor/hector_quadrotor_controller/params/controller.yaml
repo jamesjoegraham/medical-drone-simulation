@@ -44,8 +44,8 @@ controller:
             time_constant: 0.1
         limits:
             load_factor: 1.5
-            force/z: 30.0
-            torque/xy: 0.5
-            torque/z: 1.0
+            force/z: 100.0
+            torque/xy: 1.5
+            torque/z: 3.0
     motor:
         type: hector_quadrotor_controller/MotorController
