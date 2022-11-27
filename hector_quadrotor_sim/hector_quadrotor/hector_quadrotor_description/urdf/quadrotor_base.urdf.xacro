@@ -6,26 +6,35 @@
   <xacro:property name="pi" value="3.1415926535897931" />
 
   <!-- Main quadrotor link -->
-  <xacro:macro name="quadrotor_base_macro">
+  <!-- Old Values pre-upscaling -->
+  <!-- <xacro:macro name="quadrotor_base_macro">
     <link name="base_link">
       <inertial>
         <mass value="1.477" />
         <origin xyz="0 0 0" />
         <inertia ixx="0.01152" ixy="0.0" ixz="0.0" iyy="0.01152" iyz="0.0" izz="0.0218" />
+      </inertial> -->
+
+  <xacro:macro name="quadrotor_base_macro">
+    <link name="base_link">
+      <inertial>
+        <mass value="5.908" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.04608" ixy="0.0" ixz="0.0" iyy="0.04608" iyz="0.0" izz="0.0872" />
       </inertial>
 
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <!-- <origin xyz="28.204388 7.095104 -9.95" rpy="0 0 0" /> -->
         <geometry>
-          <mesh filename="package://hector_quadrotor_description/meshes/quadrotor/quadrotor_base.dae" scale = "3 3 3"/>
+          <mesh filename="package://hector_quadrotor_description/meshes/quadrotor/quadrotor_base.dae" scale = "4 4 4"/>
         </geometry>
       </visual>
 
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://hector_quadrotor_description/meshes/quadrotor/quadrotor_base.stl" scale = "3 3 3"/>
+          <mesh filename="package://hector_quadrotor_description/meshes/quadrotor/quadrotor_base.stl" scale = "4 4 4"/>
         </geometry>
       </collision>
     </link>
