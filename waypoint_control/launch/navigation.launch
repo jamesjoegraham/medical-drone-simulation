@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <launch>
-      <arg name="waypoints_json" default="citynavigation" />
+      <arg name="waypoints_json" default="hover" />
       <arg name="wrenches_json" default="walking" />
 
       <node pkg="waypoint_control" name="custom_waypoint_navigation" type="custom_waypoint_navigation.py" output="screen">
