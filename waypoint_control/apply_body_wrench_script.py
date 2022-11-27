@@ -5,13 +5,18 @@ import rospy
 import json
 import os
 from gazebo_msgs.srv import ApplyBodyWrench
-from geometry_msgs.msg import Wrench
+from geometry_msgs.msg import Wrench, PoseStamped
 
 
 # def apply_body_wrench_client(x, y, z):
 #     rospy.wait_for_service('apply_body_wrench')
 #     try:
 #         apply_body_wrench = rospy.ServiceProxy('apply_body_wrench', )
+
+# Initialize ROS Functionality
+rospy.init_node('command_pose_listener')
+pose_pub = rospy.Subscriber('/command/pose', PoseStamped, queue_size=1)
+rospy.Subscriber("/ground_truth_to_tf/pose", PoseStamped, gazebo_pose_callback)
 
 def applyForce(wrench, wrench_duration): 
     rospy.wait_for_service('/gazebo/apply_body_wrench') 

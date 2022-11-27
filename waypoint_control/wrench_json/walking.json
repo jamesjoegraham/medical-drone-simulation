@@ -3,9 +3,9 @@
         "type": "oscillation",
         "osc_type": "ramp",
         "frequency": 0.1,
-        "amplitude": 912,
+        "amplitude": 0.5,
         "dimension": "torque x",
-        "duration": 40
+        "duration": 10
     }
 ]
    
