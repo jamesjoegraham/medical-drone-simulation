@@ -9,9 +9,13 @@
   <xacro:macro name="quadrotor_base_macro">
     <link name="base_link">
       <inertial>
-        <mass value="1.477" />
+        <!-- commented lines are previous values-->
+        <!-- <mass value="1.477" /> -->
+        <mass value="5.0" />
         <origin xyz="0 0 0" />
-        <inertia ixx="0.01152" ixy="0.0" ixz="0.0" iyy="0.01152" iyz="0.0" izz="0.0218" />
+        <!-- <inertia ixx="0.01152" ixy="0.0" ixz="0.0" iyy="0.01152" iyz="0.0" izz="0.0218" /> -->
+        <inertia ixx="0.03905" ixy="0.0" ixz="0.0" iyy="0.03905" iyz="0.0" izz="0.0739" />
+        
       </inertial>
 
       <visual>

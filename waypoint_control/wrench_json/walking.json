@@ -3,7 +3,7 @@
         "type": "oscillation",
         "osc_type": "ramp",
         "frequency": 0.1,
-        "amplitude": 0.5,
+        "amplitude": 0,
         "dimension": "torque x",
         "duration": 10
     }
