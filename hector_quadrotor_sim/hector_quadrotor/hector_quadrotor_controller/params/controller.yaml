@@ -2,15 +2,15 @@ controller:
     pose:
         type: hector_quadrotor_controller/PoseController
         xy:
-            k_p: 1.25
+            k_p: 1.00
             k_i: 0.0
             k_d: 1.0
-            limit_output: 5.0
+            limit_output: 3.5
         z:
-            k_p: 1.0
+            k_p: 0.75
             k_i: 0.0
             k_d: 0.0
-            limit_output: 2.0
+            limit_output: 1.50
         yaw:
             k_p: 0.75
             k_i: 0.0
@@ -19,7 +19,7 @@ controller:
     twist:
         type: hector_quadrotor_controller/TwistController
         linear/xy:
-            k_p: 5.0
+            k_p: 3.0
             k_i: 1.0
             k_d: 0.0
             limit_output: 10.0
@@ -28,7 +28,7 @@ controller:
             k_p: 5.0
             k_i: 1.0
             k_d: 0.0
-            limit_output: 10.0
+            limit_output: 5.0
             time_constant: 0.05
         angular/xy:
             k_p: 3.0
@@ -43,11 +43,12 @@ controller:
             limit_output: 3.0
             time_constant: 0.1
         limits:
-            load_factor: 1.5
             # original Values
+            # load_factor: 1.5
             # force/z: 30.0
             # torque/xy: 0.5
             # torque/z: 1.0
+            load_factor: 6600
             force/z: 132024.3737
             torque/xy: 2200.406229
             torque/z: 4400.812458
