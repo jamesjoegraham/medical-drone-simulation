@@ -32,9 +32,9 @@ controller:
             time_constant: 0.05
         angular/xy:
             k_p: 3.0
-            k_i: 2.0
+            k_i: 5.00
             k_d: 5.0
-            limit_output: 3.0
+            limit_output: 10.0
             time_constant: 0.01
         angular/z:
             k_p: 5.0
