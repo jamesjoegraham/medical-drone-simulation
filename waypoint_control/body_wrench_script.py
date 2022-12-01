@@ -6,8 +6,10 @@ import json
 import math
 import time
 import os
+from std_msgs.msg import Header
 from gazebo_msgs.srv import ApplyBodyWrench
 from geometry_msgs.msg import Wrench
+from geometry_msgs.msg import WrenchStamped
 from gazebo_msgs.msg import LinkStates
 
 
@@ -89,6 +91,8 @@ def get_wrench(wrench_file):
             start_time = time.time()
             cur_time = time.time() - start_time
 
+            force_pub = rospy.Publisher("current_force", WrenchStamped, queue_size=10)
+
             print('Start time={0}'.format(start_time))
             while (cur_time < duration):
                 test_s_t = cur_time
@@ -96,9 +100,16 @@ def get_wrench(wrench_file):
                 wrenchj[dimension] = cur_force
                 wrench = create_wrench(wrenchj)
                 success = apply_force(wrench, 0.05)
-                #print_success(success)
                 cur_time = time.time() - start_time
-                #print('Time: {0} Force: {1}'.format(cur_time, cur_force))
+                
+                # Publish current force to topic current_force
+                w_stamped = WrenchStamped()
+                w_header = Header()
+                w_header.stamp = rospy.Time.now()
+                w_stamped.header = w_header
+                w_stamped.wrench = wrench
+                force_pub.publish(w_stamped)
+
                 rospy.sleep(0.05)
 
         elif wrench_type == "impulse":
