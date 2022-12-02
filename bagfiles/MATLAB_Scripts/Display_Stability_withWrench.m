@@ -2,10 +2,10 @@ clear all;
 close all;
 clc;
 
-bag = rosbag("Pose_with_wrench.bag");
+bag = rosbag("after_tweak.bag");
 bag.AvailableTopics;
 bagselect1 = select(bag,"Topic", "/ground_truth_to_tf/pose");
-bagselect2 = select(bag,"Topic", "/propulsion/wrench");
+bagselect2 = select(bag,"Topic", "/current_force");
 
 % msgs = readMessages(bagselect2, 1:10, 'DataFormat', 'struct')
 % msgs2 = readMessages(bagselect1, 1:10, 'DataFormat', 'struct')
@@ -20,9 +20,8 @@ orientation_deg = [pitch, roll].*180./pi;
 ts_orientation.Data = orientation_deg;
 
 
-
 figure(1);
-subplot(4,1,1);
+subplot(2,1,1);
 grid on;
 hold on;
 plot(ts_position)
@@ -32,7 +31,7 @@ xlabel("Time (s)");
 ylabel("Position (m)");
 
 
-subplot(4,1,2);
+subplot(2,1,2);
 grid on;
 hold on;
 plot(ts_orientation)
@@ -41,7 +40,8 @@ title("Roll and Pitch of Quadrotor During Trial");
 xlabel("Time (s)");
 ylabel("Orientation (deg)");
 
-subplot(4,1,3);
+figure(2);
+% subplot(2,1,1);
 grid on;
 hold on;
 plot(ts_wrench_force)
@@ -50,7 +50,7 @@ title("Force Applied to Quadrotor During Trial");
 xlabel("Time (s)");
 ylabel("Force (N)");
 
-subplot(4,1,4);
+% subplot(2,1,2);
 grid on;
 hold on;
 plot(ts_wrench_torque)
