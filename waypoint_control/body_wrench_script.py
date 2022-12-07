@@ -62,6 +62,7 @@ def get_wrench(wrench_file):
     # open the file
     if not wrench_file:
         wrench_file = "ImpulseTest"
+        return
     if not wrench_file.endswith('.json'):
         wrench_file = wrench_file + '.json'
     print('Opening file {0}'.format(wrench_file))

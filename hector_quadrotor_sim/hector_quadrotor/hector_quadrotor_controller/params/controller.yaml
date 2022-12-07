@@ -22,7 +22,7 @@ controller:
             k_p: 3.0
             k_i: 1.0
             k_d: 0.0
-            limit_output: 10.0
+            limit_output: 5.0
             time_constant: 0.05
         linear/z:
             k_p: 5.0
@@ -34,7 +34,7 @@ controller:
             k_p: 3.0
             k_i: 5.00
             k_d: 5.0
-            limit_output: 10.0
+            limit_output: 8.0
             time_constant: 0.01
         angular/z:
             k_p: 5.0
